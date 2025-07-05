@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SkillPro Certification Test</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      padding: 40px;
+      background-color: #f9fafb;
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      color: #1e3a8a;
+    }
+    .question {
+      margin: 20px 0;
+    }
+    .button {
+      background: #3b82f6;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>SkillPro – Communication Skill Test</h1>
+  <form id="quizForm">
+    <div class="question">
+      <p>1. What is the most important part of communication?</p>
+      <input type="radio" name="q1" value="a" /> Talking<br />
+      <input type="radio" name="q1" value="b" /> Listening<br />
+      <input type="radio" name="q1" value="c" /> Writing<br />
+    </div>
+    <div class="question">
+      <p>2. How can you improve your public speaking?</p>
+      <input type="radio" name="q2" value="a" /> Avoid speaking<br />
+      <input type="radio" name="q2" value="b" /> Practice regularly<br />
+      <input type="radio" name="q2" value="c" /> Read silently<br />
+    </div>
+    <button type="submit" class="button">Submit Test</button>
+    <div class="result" id="result"></div>
+  </form>
+
+  <script>
+    document.getElementById("quizForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      let score = 0;
+      if (document.querySelector('input[name="q1"]:checked')?.value === "b") score++;
+      if (document.querySelector('input[name="q2"]:checked')?.value === "b") score++;
+
+      const resultDiv = document.getElementById("result");
+      if (score === 2) {
+        resultDiv.innerHTML = "✅ You passed the test!<br><a href='#' class='button'>Download Certificate</a>";
+      } else {
+        resultDiv.innerHTML = "❌ You did not pass. Please try again.";
+      }
+    });
+  </script>
+</body>
+</html>
